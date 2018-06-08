@@ -1,0 +1,112 @@
+<view class="container">
+<!-- 地址 -->
+  <view class="payAddress" bindtap='changeAddress' wx:if="{{address.id!=0}}">
+    <view class="addressBox">
+      <view class="address-first">
+        <text class="address-name">收货人：{{address.contacts}}</text>
+        <text class="address-phone">{{address.mobile}}</text>
+      </view>
+      <view class="address-first address-color">{{address.provinceName}}{{address.cityName}}{{address.districtName}}{{address.address}}          </view>
+    </view>
+    <view class="change-address">
+    <image src="../../images/kind/right_arrow.png"></image>
+    </view>
+  </view>
+   <view class="payAddress" bindtap='changeAddress' wx:else>
+    <view class="addressBox">
+      <view class="address-first">
+      
+        <text class="address-phone">请添加收货地址</text>
+      </view>
+      <view class="address-first address-color"></view>
+    </view>
+    <view class="change-address">
+    <image src="../../images/kind/right_arrow.png"></image>
+    </view>
+  </view>
+  <view class="payAddressBj"><image src="../../images/kind/address_demarcation@3x.png"></image></view>
+  <view class="pay-Space"></view>
+  <view class="payList-box">
+    <view class="payList" wx:for="{{buyList}}" wx:key="{{buyList}}">
+      <view class="pay-img">
+        <image src="{{item.skuPic}}"></image>
+      </view>
+      <view class="pay-decoration-box">
+        <view class="payList-name">{{item.itemName}}{{item.skuName}}</view>
+        <view class="payList-num">数量：{{item.quantity}}件</view>
+        <view>
+          <text class="payList-price">￥{{item.price/100.00}}</text>
+        </view>
+      </view>
+   </view>
+      <view class="discount">
+        <text class="discount-title">配送方式</text>
+        <text class="discount-price">商家配送</text>
+      </view>
+      <view class="discount">
+        <text class="discount-title">合计</text>
+        <text class="discount-price redColor">￥{{totalAmount/100.00}}</text>
+      </view>
+      <view class="discount" bindtap='selectCoupons'>
+        <text class="discount-title">优惠券</text>
+        <text class="discount-price {{redColor?'redColor':''}}">{{totalCoupon}}</text>
+        <!-- <text class="discount-price" wx:if="{{item.canUse==false}}">无可用优惠券</text> -->
+      </view>
+  </view>
+  <view class="payList-box pay-box">
+    <text class="discount-title">支付方式</text>
+    <text class="discount-price">微信支付</text>
+  </view>
+
+  <view class="payList-box pay-box pay-box1" style="margin-bottom:100rpx;">
+    <view class="discount-title-box">
+     <text class="discount-title">给商家留言</text>
+    </view>
+    <view class="pay-input-box">
+     <input class="pay-input" maxlength="50" placeholder='点击此处给商家留言吧...' bindinput='community'></input>
+    </view>
+  </view>
+</view>
+<view class="detail-cart-bottom">
+  <view class="row">
+    <text class="row-price"><text class="row-price-total">共计：</text>￥{{tempTotalAmount/100.00}}</text>
+    <text class="row-cart" bindtap='submitOrder' data-orderId="{{order.orderId}}">提交订单</text>
+  </view>
+</view>
+
+
+  <!-- 优惠券选择 -->
+<view class='maskLayer' wx:if="{{addCart}}" bindtap='hideModal'></view>
+<view class='addcartStyle' wx:if="{{addCart}}" animation='{{animationData}}'>
+    <view class="box" wx:if="{{showCoupon==true}}">
+      <scroll-view bindscroll="srcoll" class="scrollview-list " scroll-y="true" bindscrolltolower="lower">
+        <view class="coupon-list-wrapper" wx:for="{{couponList}}" wx:key="item" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" bindtap='changeCoupon'  data-couponid="{{item.couponId}}">
+          <view class="coupon-list">
+            <view class="coupon-list-left">
+              <image wx:if="{{item.canUse==true}}"  src="../../images/kind/coupon_header_highlight.png"></image>
+              <image wx:if="{{item.canUse==false}}" src="../../images/kind/coupon_header_dark.png"></image>
+              <view class="coupon-price">￥<text class="coupon-num" data-value="{{item.couponPrice/100.00}}">{{item.couponPrice/100.00}}</text>元</view>
+              <view wx:if="{{item.couponIslimit==1}}">
+                  <view class="coupon-use">满<text>{{item.couponLimit/100.00}}</text>元可用</view>
+              </view>
+              <view wx:elif="{{item.couponIslimit==0}}">
+                  <view class="coupon-use">无限制</view>
+              </view>  
+            </view>
+            <view class="coupon-list-right">
+              <view class="coupon-detail">{{item.couponTitle}}</view>
+              <view class="coupon-time">{{item.couponStartDate}} - {{item.couponEndDate}}</view>
+              <view class="coupon-line"></view>
+              <view class="coupon-explain">{{item.couponDesc}}</view>
+              <view class="coupon-new">
+                <image src="{{item.img}}"></image>
+              </view>
+              <view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="box couponTip" wx:if="{{showCoupon==false}}">无可用优惠券</view>   
+</view>

@@ -1,0 +1,64 @@
+<form bindsubmit='savePersonInfo' class="container">
+  <view class="new-box">
+    <view class="new-name-box">
+      <view class="new-name">收货人</view>
+      <input class="new-user" name="consigneeName" placeholder-class="phcolor" value="{{consigneeName}}"/>
+    </view>
+   
+    <view class="new-name-box">
+      <view class="new-name">手机号码</view>
+      <input class="new-user" type="number" name="consigneePhone" placeholder-class="phcolor" value="{{consigneePhone}}"/>
+    </view>
+   
+    <view class="new-name-box" bindtap="showDistpicker">
+    <view class="new-name">所在地区</view>
+      <view class="input choose-area {{!provinceName[provinceSelIndex] ? 'input-placeholder' : ''}}">
+        <block wx:if="{{provinceName[provinceSelIndex]}}">{{provinceName[provinceSelIndex]}} {{cityName[citySelIndex]}} {{districtName[districtSelIndex]}}</block>
+        <block wx:else>{{pName}}{{cName}}{{dName}}</block>
+      </view>
+       <input type="text" name="provinceCode" value="{{provinceCode}}" class="hidden"/>
+      <input type="text" name="cityCode" value="{{cityCode}}" class="hidden"/>
+      <input type="text" name="districtCode" value="{{districtCode}}" class="hidden"/> 
+    </view>
+   
+    <view class="new-name-box">
+      <view class="new-name">详细地址</view>
+      <input class="new-user" name="address" placeholder-class="phcolor" value='{{address}}'/>
+    </view>
+  
+    <view class="new-name-box">
+      <view class="new-name">
+         <checkbox-group bindchange="checkboxChange">
+             <checkbox value="2" checked="{{addressDefault == 1}}"/> 
+        </checkbox-group> 
+      </view>
+      <view class="new-set">设为默认地址</view>
+    </view>
+
+    
+  </view>
+  <button class="new-keep" formType="submit">保存</button>
+</form>
+
+<view class="distpicker {{showDistpicker ? '' : 'hidden'}}">
+    <view class="distpicker-btn">
+        <view class="distpicker-cancel-btn" bindtap="distpickerCancel">取消</view>
+        <view class="distpicker-sure-btn" bindtap="distpickerSure">确定</view>
+    </view> 
+    <picker-view indicator-style="height: 40px;" class="distpicker-content" value="{{value}}" bindchange="changeArea">
+        <!-- 省 -->
+        <picker-view-column>
+            <view wx:for="{{provinceName}}" wx:key="province" class="area-item">{{item}}</view>
+        </picker-view-column>
+        <!-- 市 -->
+        <picker-view-column>
+            <view wx:for="{{cityName}}" wx:key="city" class="area-item">{{item}}</view>
+        </picker-view-column>
+        <!-- 区 -->
+        <picker-view-column>
+            <view wx:for="{{districtName}}" wx:key="district" class="area-item">{{item}}</view>
+        </picker-view-column>
+    </picker-view>
+</view>
+<view class="mask" catchtap="distpickerCancel" hidden="{{!showDistpicker}}"></view>
+<view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>

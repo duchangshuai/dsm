@@ -1,0 +1,13 @@
+/* pages/invitation/invitation.wxss */
+.invitation-content{
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border: 2rpx solid #333;
+  border-radius: 20rpx;
+  position: absolute;
+  left: 0;right: 0;
+  top:0;bottom:0;
+  margin: auto;
+}

@@ -1,0 +1,43 @@
+page {
+  background: #fff;
+  height: 100%;
+}
+
+.userInfoAuth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-top: 244rpx;
+}
+
+.userInfoAuth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+}
+
+.container {
+  margin-bottom: 60rpx;
+}
+
+.userInfoAuth-avatar {
+  width: 170rpx;
+  height: 170rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userInfoAuth-nickname {
+  color: #333;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+button[plain] {
+  line-height: 70rpx;
+}

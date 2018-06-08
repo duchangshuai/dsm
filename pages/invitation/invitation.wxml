@@ -1,0 +1,2 @@
+<!--pages/invitation/invitation.wxml-->
+<view class="invitation-content" bindtap='Agree'>同意</view>

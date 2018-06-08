@@ -1,0 +1,10 @@
+<view class="userInfoAuth-container">
+  <view class="container">
+    <view class="userInfoAuth">
+      <open-data class="userInfoAuth-avatar" type="userAvatarUrl"></open-data>
+      <open-data class="userInfoAuth-nickname" type="userNickName"></open-data>
+    </view>
+  </view>
+  <button type="primary" plain="true" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  <view wx:else>请升级微信版本</view>
+</view>

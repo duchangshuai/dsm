@@ -1,0 +1,85 @@
+<view class="cart-noempty"  wx:if="{{boolean==true}}">
+    <scroll-view class="scroll" scroll-y="true">
+  <view class="cartHeader">
+    <!-- <icon class="item-allselect" bindtap="allSelect" type="{{isAllSelect?'success':'circle'}}"></icon> -->
+    <icon wx:if="{{CheckAll}}"  class="item-allselect" color="#FF4043" size="18" type="success"  bindtap="select" data-index="{{index}}" />
+    <icon wx:else type="circle"   class="item-allselect"  size="18"  bindtap="select" data-index="{{index}}"/>
+    <text class="small_text">全选</text>
+    <text class="edit" bindtap='onChangeShowState'>{{showView?'编辑':'完成'}}</text>
+  </view>
+  <view wx:for="{{cartItems}}"  wx:key="cartItems" class="cart-content touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+  <view class="cart-btnBox" bindtap='btn' data-id="{{item.itemId}}">
+    <view class="cart_container content" wx:if="{{editStyle==true}}" data-id="{{item.id}}" data-index="{{index}}">
+        <icon class="item-select" wx:if="{{item.isSelected}}" type="success"  color="#FF4043" size="18"  catchtap="selectedCart" data-index="{{index}}" data-cartId="{{item.cartId}}"/>
+        <icon class="item-select" wx:else type="circle"  size="18" catchtap="selectedCart"  data-index="{{index}}" data-cartId="{{item.cartId}}"/>
+          
+      <view class="item-image-box">
+         <image class="item-image" src="{{item.firstPicUrl}}"></image> 
+      </view>
+      <view class="column">
+        <text class="title">{{item.itemName}}</text>
+        <view class="cart-attribute">{{item.skuName}}</view>
+        <view class="row clearfix">
+          <view class="price-box">
+            <text class="sku-price">￥</text>
+            <text class="sku-price">{{item.salePrice/100.00}}</text>
+          </view>
+          <view class="sku clearfix">
+            <text class="{{minStatuses[index]}}" catchtap='reduce' data-index="{{index}}" data-cartId="{{item.cartId}}" data-stockquantity="{{item.stockQuantity}}">-</text>
+            <text class="num" catchtap='reduce1'>{{item.quantity}}</text>
+            <text class="add" catchtap='add' data-index="{{index}}" data-cartId="{{item.cartId}}" data-stockquantity="{{item.stockQuantity}}">+</text>
+          </view>
+        </view>
+      </view>
+      <!-- 删除 -->
+      <view class="del"  wx:if="{{editStyle}}" catchtap="deleteCart" data-index="{{index}}" data-cartId="{{item.cartId}}">删除</view>
+    </view>
+      <view class="cart_container" wx:if="{{editStyle==false}}" data-id="{{item.id}}" data-index="{{index}}">
+        <icon class="item-select" wx:if="{{item.isSelected}}" type="success"  color="#FF4043" size="18"  catchtap="selectedCart" data-index="{{index}}" data-cartId="{{item.cartId}}"/>
+        <icon class="item-select" wx:else type="circle"  size="18" catchtap="selectedCart"  data-index="{{index}}" data-cartId="{{item.cartId}}"/>
+          
+      <view class="item-image-box">
+         <image class="item-image" src="{{item.firstPicUrl}}"></image> 
+      </view>
+      <view class="column">
+        <text class="title">{{item.itemName}}</text>
+        <view class="cart-attribute">{{item.skuName}}</view>
+        <view class="row clearfix">
+          <view class="price-box">
+            <text class="sku-price">￥</text>
+            <text class="sku-price">{{item.salePrice/100.00}}</text>
+          </view>
+          <view class="sku clearfix">
+            <text class="{{minStatuses[index]}}" catchtap='reduce' data-index="{{index}}" data-cartId="{{item.cartId}}" data-stockquantity="{{item.stockQuantity}}">-</text>
+            <text class="num" catchtap='reduce1'>{{item.quantity}}</text>
+            <text class="add" catchtap='add' data-index="{{index}}" data-cartId="{{item.cartId}}" data-stockquantity="{{item.stockQuantity}}">+</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
+</scroll-view>
+<view class="remove-cart" wx:if="{{editStyle}}">
+  <text class="remove-gray" bindtap="go" data-id="{{item.id}}" >清空购物车</text>
+</view>
+<view class="bottom_total" wx:else>
+  <view class="bottom_line"></view>
+  <view class="row">
+    <view class="row-total">
+      <text class="total">合计: </text>
+      <text class="price">￥{{total}}</text>
+    </view>
+    <button class="button-red" bindtap="goPay" formType="submit">去结算</button>
+  </view>
+</view>
+</view>
+<view class="cart-empty" wx:elif="{{boolean==false}}">
+   <view class="no_commodity">
+     <image src="../../images/kind/no_commodity.png"></image>
+   </view>
+   <view class="no-text">购物车还没有商品哦！</view>
+   <view class="around-box">
+      <view class="around" bindtap="goIndex">快去逛逛</view> 
+   </view>
+</view>

@@ -1,0 +1,23 @@
+<!--pages/logistics/logistics.wxml-->
+<view class="logistics-wrapper">
+  <view class="logistics-header">
+    <view class="orderNumber">订单编号：{{orderId}}</view>
+    <view>物流名称：{{expressName}}</view>
+    <view>物流单号：{{shippingCode}}</view>
+  </view>
+  <view class="background"></view>
+   <view class="logistics-content" wx:if="{{havelogistics==true}}">
+    <view class="clearfix logisticsbox" wx:for="{{trackList}}" wx:key="trackList" wx:for-item="trackList">
+      <view class="logistics-circle"></view>
+      <view class="order-tracking">
+        <view>{{trackList.context}}</view>
+        <view>{{trackList.time}}</view>
+      </view>
+    </view>
+  </view> 
+  <view class="logistics-content logistics-none" wx:if="{{havelogistics==false}}">
+    暂无物流信息
+  </view>
+
+</view>
+

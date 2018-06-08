@@ -1,0 +1,26 @@
+<!--pages/tiplist/tiplist.wxml-->
+<!--pages/commission/commission.wxml-->
+<view class="container">
+  <view class="title">
+    <text class="title-txt">已推荐{{count}}人，已有{{haveOrderUser}}人下单</text>
+  </view>
+  <view class="presented-wrapper" wx:for="{{itemlist}}" wx:key="itemlist"  wx:for-item="itemlist">
+    <view class="presented">
+      <view class="presented-img">
+        <image src="{{itemlist.avatarUrl}}"></image>
+      </view>
+      <view class="presented-content">
+        <view class="presented-name">{{itemlist.nickName}}</view>
+        <view class="presented-time">{{itemlist.createDate}}</view>
+      </view>
+      <view class="presented-right">
+        <view class="havepresented" wx:if="{{itemlist.orderStatus==1}}">已下单</view>
+        <view class="havepresented" wx:if="{{itemlist.orderStatus==0}}">未下单</view>
+      </view>
+    </view>
+  </view>
+   <view hidden="{{hideBottom}}"> 
+         <view class="noItem">{{loadMoreData}}</view>
+   </view>
+</view>
+

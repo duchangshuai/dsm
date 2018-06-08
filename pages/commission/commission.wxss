@@ -1,0 +1,263 @@
+/* pages/commission/commission.wxss */
+/* @import "../../lib/weui.wxss"; */
+
+.container {
+  width: 100%;
+}
+
+.commission-box {
+  height: 400rpx;
+  width: 94%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 24rpx;
+  margin-top: 20rpx;
+}
+
+.commission-money {
+  margin-top: 40rpx;
+  text-align: center;
+  font-size: 60rpx;
+}
+
+.commission-money-tip {
+  font-size: 26rpx;
+}
+
+.commission-presented {
+  font-size: 26rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.commission-btn {
+  width: 480rpx;
+  height: 88rpx;
+  border-radius: 8rpx;
+  text-align: center;
+  color: #fff;
+  background: #ff4043;
+  margin: 0 auto;
+  margin-top: 14rpx;
+  line-height: 88rpx;
+  font-size: 34rpx;
+}
+
+.commiss-txt {
+  color: #9b9b9b;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.presented-wrapper {
+  width: 100%;
+  height: 164rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #e7e7e7;
+}
+
+.presented {
+  padding: 0 24rpx;
+  display: flex;
+}
+
+.presented-img {
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 30rpx;
+  border-radius: 100%;
+}
+
+.presented-img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.presented-content {
+  width: 466rpx;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+  text-align: left;
+}
+
+.presented-name {
+  font-size: 32rpx;
+}
+
+.presented-price {
+  font-size: 26rpx;
+}
+
+.presented-time {
+  font-size: 26rpx;
+  color: #a9a9a9;
+}
+
+.presented-right {
+  width:152rpx;
+  padding-top: 20rpx;
+  text-align: right;
+}
+
+.havepresented {
+  color: #f27a49;
+  font-size: 24rpx;
+}
+
+.havepresented-price {
+  font-size: 40rpx;
+  line-height: 60rpx;
+}
+
+.title {
+  padding: 0 24rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+}
+
+.noItem {
+  width: 100%;
+  height: 100rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #9b9b9b;
+  margin-top: 20rpx;
+}
+
+.maskLayer {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 90rpx;
+  z-index: 10;
+}
+
+.withdrawStyle {
+  width: 100%;
+  height: 610rpx;
+  position: fixed;
+  bottom: 0rpx;
+  background: #fff;
+  z-index: 10;
+  overflow-y: hidden;
+}
+.headerView {
+  z-index:99;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #ededed;
+  font-size: 30rpx;
+  background: #fff;
+}
+.boxtwo-tab-nav {
+  display: inline-block;
+  color: #666;
+  text-align: center;
+}
+.on{
+  color:#FF4043;
+  border-bottom: 4rpx solid #FF4043; 
+}
+.widthdraw-input {
+  display: inline-block;
+}
+
+.weui-cells__title:before {
+  content: "*";
+  color: red;
+  display: inline-block;
+  width: 0;
+  position: relative;
+  left: -10px;
+}
+.weui-cells__title{
+  width:180rpx;
+  line-height:80rpx;
+  padding-left:30rpx;
+}
+.weui-input{
+  height:80rpx;
+  line-height:80rpx;
+}
+.weui-cells{
+  width:66%;
+}
+.commission-btn1 {
+  margin-top: 80rpx;
+}
+.widthdraw-box{
+  display:flex;
+  border-bottom:1rpx solid #e7e7e7;
+  height:80rpx;
+  font-size:32rpx;
+}
+.widthdraw-tip{
+  color:red;
+  margin-left:20rpx;
+  margin-top:20rpx;
+}
+.widthdraw-tip-top{
+ margin-top:90rpx;
+ height:20rpx;
+ background:#EDEEF0;
+}
+.widthdraw-history-top{
+  height:20rpx;
+  background:#EDEEF0;
+  margin-top:20rpx;
+}
+.widthdraw-history{
+  margin-top:20rpx;
+  color:#999;
+  margin-left:20rpx;
+}
+.place-holder{
+  font-size:32rpx;
+}
+.card-box{
+  width:80%;
+  height:180rpx;
+  border:1rpx solid #e7e7e7;
+  margin:0 auto;
+	background: linear-gradient(to bottom right, red,pink);
+  border-radius: 8rpx;
+  margin-bottom:20rpx;
+}
+.card-name{
+  color:#fff;
+  font-size:32rpx;
+  margin-top:20rpx;
+  padding:0 24rpx;
+}
+.card-bank{
+  color:#fff;
+  font-size:28rpx;
+  margin-top:20rpx;
+  padding:0 24rpx;
+}
+.card-wrapper{
+  height:350rpx;
+  overflow-y: auto;
+}
+.getPhoneNumber{
+  font-size:34rpx;
+  border:none;
+  margin-left:0;
+  margin-right:0;
+  width:100%;
+  text-align:left;
+  padding-left:0;
+}

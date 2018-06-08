@@ -1,0 +1,35 @@
+<view class="container-address">
+  <view class="address-box">
+  <view class="address-box1" wx:if="{{boolean==true}}">
+      <radio-group class="radio-group" bindchange="radioChange">
+      <view class="address-list" wx:for="{{list}}" wx:key="{{index}}">
+        <view class="address-list-t" data-index="{{index}}">
+          <view class="address-name" data-index="{{index}}">{{item.consigneeName}}</view>
+          <view class="address-local" data-index="{{index}}">{{item.provinceName}}{{item.cityName}}{{item.districtName}}{{item.address}}            </view>
+          <view class="address-tel" data-index="{{index}}">{{item.consigneePhone}}</view>
+        </view>
+        <view class="address-list-b" data-index="{{index}}">     
+          <radio color="#FF4043"  class="address-select" value="{{item.addressId}}" checked="{{item.addressDefault ==1}}"/>                    
+          <view class="select-text">设为默认地址</view>
+          <view class="edit-box"  bindtap="kindToggle" data-index="{{index}}" data-value="{{item.addressId}}" data-checked="1">
+            <image  class="address-edit" src="../../images/kind/adress_edit.png" data-value="{{item.addressId}}"></image>
+            <view class="edit-text" data-value="{{item.addressId}}">编辑</view>
+          </view>
+          <view class="del-box" bindtap='addressDel' data-index="{{index}}" data-value="{{item.addressId}}">
+            <image  class="address-del" src="../../images/kind/adress_delete.png" data-value="{{item.addressId}}"></image>
+            <view class="del-text" data-value="{{item.addressId}}">删除</view>
+          </view>  
+        </view>
+      </view>       
+    </radio-group> 
+  </view>
+  <view class="address-box2" wx:elif="{{boolean==false}}">
+     <view class="no_commodity">
+       <image src="../../images/kind/adress_space.png"></image>
+     </view>
+   <view class="no-text">您还没有添加收货地址哦!</view>
+  </view>  
+    <view class="address-add" bindtap='addressNew'>添加新地址</view>  
+  </view>  
+  
+</view>  

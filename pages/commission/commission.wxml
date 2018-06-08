@@ -1,0 +1,112 @@
+<!--pages/commission/commission.wxml-->
+<view class="container" bindscrolltoupper="refreshDown" bindscroll="scroll" bindscrolltolower="onReachBottom">
+  <view class="commission-box">
+    <view class="commission-money">
+      <text class="commission-money-tip">￥</text>{{memberAccount/100.00}}</view>
+    <view class="commission-presented">可提现{{withdrawAccount/100.00}}元</view>
+    <view class="commiss-txt">提现条件：订单完成30天后可提现</view>
+    <view class="commission-btn" bindtap="withdraw" data-withdarw="{{withdrawAccount}}">提现</view>
+  </view>
+  <view class="title" wx:if="{{titleShow==true}}">佣金明细</view>
+  <view class="presented-wrapper" wx:for="{{itemlist}}" wx:key="itemlist" wx:for-item="itemlist">
+    <view class="presented">
+      <view class="presented-img">
+        <image src="{{itemlist.avatarUrl}}"></image>
+      </view>
+      <view class="presented-content">
+        <view class="presented-name">{{itemlist.nickName}}</view>
+        <view class="presented-price" style="height:20rpx" wx:if="{{itemlist.orderPrice/100.00==0}}"></view>
+        <view class="presented-price" wx:if="{{itemlist.orderPrice/100.00!=0}}">订单金额￥{{itemlist.orderPrice/100.00}}</view>
+        <view class="presented-time" style="height:20rpx" wx:if="{{itemlist.paidDate==''}}"></view>
+        <view class="presented-time" wx:if="{{itemlist.paidDate!=''}}">创建时间 {{itemlist.paidDate}}</view>
+      </view>
+      <view class="presented-right">
+        <view class="havepresented-price">
+          <text wx:if="{{itemlist.status > 0}}">+</text>
+          <text wx:if="{{itemlist.status < 0}}">-</text>
+          <text>{{itemlist.commission/100.00}}</text>
+        </view>
+        <view class="havepresented">{{itemlist.statusName}}</view>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{hideBottom}}">
+    <view class="noItem">{{loadMoreData}}</view>
+  </view>
+</view>
+
+<!-- <view class='maskLayer' wx:if="{{withdraw}}" bindtap='hideModal'></view>
+<form class='withdrawStyle' wx:if="{{withdraw}}" animation='{{animationData}}' bindsubmit="commissionWidthdraw" report-submit='true'>
+<view class='headerView flex-wrp flex-tab'>
+    <view class="boxtwo-tab-nav {{HomeIndex == 1 ?'on':''}}" bindtap="boxtwo" data-index="1">提现到银行卡</view>
+    <view class="boxtwo-tab-nav {{HomeIndex == 2 ?'on':''}}" bindtap="boxtwo" data-index="2">提现到支付宝</view>
+  </view>
+  <view class="widthdraw-tip-top"></view>
+  <view class="widthdraw-tip">请绑定持卡人本人的银行卡</view>
+  <view class="widthdraw-box">
+    <view class="weui-cells__title">持卡人</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" name="name" placeholder-class="place-holder"  placeholder="请输入持卡人姓名" />
+      </view>
+    </view>
+  </view>
+  <view class="widthdraw-box">
+    <view class="weui-cells__title">银行卡号</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" name="bankcard" placeholder-class="place-holder" type="number"  placeholder="请输入银行卡号" />
+      </view>
+    </view>
+  </view>
+  <view class="widthdraw-box">
+    <view class="weui-cells__title">银行名称</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" name="name" placeholder-class="place-holder"  placeholder="请输入银行名称" />
+      </view>
+    </view>
+  </view>
+  <view class="commission-btn commission-btn1">
+      <button type="warn" formType="submit" data-withdarw="{{withdrawAccount}}">提现</button>
+  </view>
+  <view class="widthdraw-history-top"></view>
+  <view class="widthdraw-history">银行卡记录</view>
+  <view class="card-wrapper">
+  <view class="card-box">
+    <view class="card-name">持卡人：某某某</view>
+    <view class="card-bank">银行卡号：622991101010101010</view>   
+  </view>
+   <view class="card-box">
+    <view class="card-name">持卡人：某某某</view>
+    <view class="card-bank">银行卡号：622991101010101010</view>   
+  </view>
+  </view>
+</form> -->
+<view class='maskLayer' wx:if="{{withdraw}}" bindtap='hideModal'></view>
+<form class='withdrawStyle' wx:if="{{withdraw}}" animation='{{animationData}}' bindsubmit="commissionWidthdraw" report-submit='true'>
+  <view class="widthdraw-tip">提现到支付宝</view>
+  <view class="widthdraw-box">
+    <view class="weui-cells__title">真实姓名</view>
+    <view class="weui-cells weui-cells_after-title">
+        <input class="weui-input" name="realName" placeholder-class="place-holder"  placeholder="请输入真实姓名" />
+    </view>
+  </view>
+  <view class="widthdraw-box">
+    <view class="weui-cells__title">支付宝号</view>
+    <view class="weui-cells weui-cells_after-title">
+        <input class="weui-input" name="alipayAccount" placeholder-class="place-holder"  placeholder="请输入支付宝账号" />
+    </view>
+  </view>
+  <view class="widthdraw-box">
+    <view class="weui-cells__title">手机号</view>
+      <view wx:if="{{phone!='获取手机号' && phone!='' && phone!=null}}">
+       <input class="weui-input" type="number" name="phone" placeholder-class="place-holder" value="{{phone}}" placeholder="请输入手机号" /> 
+      </view>
+      <view wx:else style="display:inline-block;">
+        <button style="border:none" class="getPhoneNumber" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" plain='false'>获取手机号</button></view>
+  </view>
+   <view class="commission-btn commission-btn1">
+      <button type="warn" formType="submit" data-withdarw="{{withdrawAccount}}">提现</button>
+  </view>
+</form>

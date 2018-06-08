@@ -1,0 +1,185 @@
+<scroll-view class="container" scroll-y="true" style="{{addCart?'height:100%;overflow:hidden':''}}">
+<view>
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-active-color="#FF4043" bindchange="swiperChange">
+        <block>
+          <view  wx:for="{{carousel}}" wx:key="carousel"  wx:for-item="item">
+            <swiper-item>
+              <image class="swiper-img" src="{{item}}"></image>
+            </swiper-item>  
+          </view> 
+        </block>
+      </swiper>
+      <view class="dots">  
+         <block wx:for="{{carousel}}" wx:key="carousel">  
+           <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>  
+         </block>  
+      </view> 
+    </view>
+    <view class="detail-title">
+      <view class="detail-price"><text class="detail-price-box">￥</text>{{price}}</view>
+      <view class="detail-name">{{itemName}}</view>
+      <view class="detail-detail">
+        <view class="detail-s">
+          <view class="detail-s-img">
+           <image src="../../images/kind/installation1.png"></image>
+          </view>
+          <view class="detail-s-text">预约安装</view>
+        </view>
+        <view class="detail-s">
+          <view class="detail-s-img">
+           <image src="../../images/kind/warranty1.png"></image>
+          </view>
+          <view class="detail-s-text">三年质保</view>
+        </view>
+        <view class="detail-s">
+          <view class="detail-s-img">
+           <image src="../../images/kind/authentic1.png"></image>
+          </view>
+          <view class="detail-s-text">正品保障</view>
+        </view>
+        <view class="detail-s">
+          <view class="detail-s-img">
+           <image src="../../images/kind/freight1.png"></image>
+          </view>
+          <view class="detail-s-text">赠运费险</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 商品详情、评论选项卡 -->
+    <view class="nav bc_white">
+    <view class="nav-title">商品详情</view>
+  </view>
+  <view class="detail-img-box">
+
+    <view class="detail-img" wx:for="{{detailPicList}}" wx:key="detailPicList"  wx:for-item="item">
+      <image style="width:100%" mode='widthFix' src="{{item}}"></image>
+    </view>     
+  </view>
+  </view>
+  </view>
+</scroll-view>
+    <!-- 底部固定导航 -->
+<view class="detail-cart-bottom">
+  <view class="row">
+    <view class="row-price" >
+      <!-- <view class="home" bindtap='goIndex'>
+        <image class="row-price-img" src="../../images/kind/home_detail.png"></image>
+        <text class="text1">首页</text>
+      </view> -->
+      <view class="home">
+      <contact-button class='cBtn' type="default-dark" size="20" session-from="weapp"> </contact-button>
+        <image class="row-price-img" src="../../images/kind/chat@3x.png"></image>
+        <text class="text1">客服</text>
+      </view>
+      <view class="home">
+        <button open-type="share" plain="false"></button>
+        <image class="row-price-img" src="../../images/kind/share_detail.png"></image>
+        <text class="text2">分享</text>
+      </view>
+      <view class="home" bindtap='cart'>
+        <image class="row-price-img row-price-img1" src="../../images/kind/car_detail.png"></image>
+        <text>购物车</text>
+      </view>
+    </view>
+    <view class="row-cart" bindtap='addCart'>加入购物车</view>
+    <!-- <view class="row-cart-pay" bindtap='gopay'>立即购买</view> -->
+  </view>
+</view>
+<view class='maskLayer' wx:if="{{addCart}}" bindtap='hideModal'></view>
+<view class='addcartStyle' wx:if="{{addCart}}" animation='{{animationData}}'>
+  <view class="addCartbox">
+    <view class="cartImgbox">
+    <image src="{{selectPic}}"></image>
+    </view>
+    <view class="cartbox-right">
+      <view class="cart-price"><text class="cart-price-tip">￥</text>{{selectPrice}}</view>
+      <view class="cart-num">已选：{{selectSkuName}}</view>
+      <view class="cart-num">剩余{{selectStockQuantity}}件</view>
+    </view>
+  </view>
+   <!-- 饰品颜色 -->
+  <view class="detail-color">
+    <view class="nav-title1">饰品颜色</view>
+    <view class="color-box clearfix">
+      <view class="color-wrapper clearfix">
+        <view class="color-change" wx:for="{{skuList}}" wx:key="skuList"  wx:for-item="item">
+          <view class="color1 {{item.skuId == _color?'color2':'color'}}" data-skuid ="{{item.skuId}}" data-stockquantity="{{item.stockQuantity}}" bindtap="clickColor" data-skuname="{{item.skuName}}" data-skupic="{{item.skuPic}}" data-skuprice="{{item.salePrice/100.00}}">
+              {{item.skuName}}
+          </view>
+        </view>        
+      </view>
+    </view>
+  </view>
+  <!-- 特色服务 -->
+  <view class="detail-server">
+    <view class="nav-title1 nav-titleTxt">特色服务</view>
+    <view class="nav-title2">
+      <text class="server">上门安装</text>
+    </view>
+  </view>
+  <view class="numBox">
+  <view class="numStyle">购买数量</view>
+    <view class="sku clearfix">
+      <text class="{{minStatus}}" bindtap='remove' data-index="{{index}}">-</text>
+      <text class="num">{{num}}</text>
+      <text class="add" bindtap='add' data-index="{{index}}">+</text>
+    </view>
+  </view>
+  <view class="detail-cart-bottom">
+    <view class="row">
+      <text class="row-cart1" bindtap="addcart1" data-id="{{cartSkuId}}" data-skuid ="{{item.skuId}}">加入购物车</text>
+    </view>
+  </view>
+</view>
+
+<!-- 立即购买 -->
+<!-- <view class='maskLayer' wx:if="{{gopayCart}}" bindtap='hideModal1'></view>
+<view class='addcartStyle' wx:if="{{gopayCart}}" animation='{{animationData}}'>
+  <view class="addCartbox">
+    <view class="cartImgbox">
+    <image src="{{selectPic}}"></image>
+    </view>
+    <view class="cartbox-right">
+      <view class="cart-price"><text class="cart-price-tip">￥</text>{{selectPrice}}</view>
+      <view class="cart-num">已选：{{selectSkuName}}</view>
+      <view class="cart-num">剩余{{selectStockQuantity}}件</view>
+    </view>
+  </view>
+  
+  <view class="detail-color">
+    <view class="nav-title1">饰品颜色</view>
+    <view class="color-box">
+      <view class="color-wrapper">
+        <view class="color-change" wx:for="{{skuList}}" wx:key="skuList"  wx:for-item="item">
+          <view class="color1 {{item.skuId == _color?'color2':'color'}}" data-skuid ="{{item.skuId}}" data-stockquantity="{{item.stockQuantity}}" bindtap="clickColor" data-skuname="{{item.skuName}}" data-skupic="{{item.skuPic}}" data-skuprice="{{item.salePrice/100.00}}">
+              {{item.skuName}}
+          </view>
+        </view>        
+      </view>
+    </view>
+  </view>
+  
+  <view class="detail-server">
+    <view class="nav-title1">特色服务</view>
+    <view>
+      <text class="server">上门安装</text>
+      <icon class="item-select" type="success" color="black" size="16" style="float:right"/>
+    </view>
+  </view>
+  <view class="numBox">
+  <view class="numStyle">数量：</view>
+    <view class="sku clearfix">
+      <text class="jian" bindtap='remove' data-index="{{index}}">-</text>
+      <text class="num">{{num}}</text>
+      <text class="add" bindtap='add' data-index="{{index}}">+</text>
+    </view>
+  </view>
+  <view class="detail-cart-bottom">
+    <view class="row">
+      <text class="row-cart1" bindtap="gopay1"  data-id="{{cartSkuId}}" >立即购买</text>
+    </view>
+  </view>
+</view> -->

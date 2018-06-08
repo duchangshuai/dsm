@@ -1,0 +1,66 @@
+<view class="container">
+  <view class='headerView flex-wrp flex-tab'>
+    <view class="boxtwo-tab-nav {{HomeIndex == 1 ?'on':''}}" bindtap="boxtwo" data-index="1">未使用</view>
+    <view class="boxtwo-tab-nav {{HomeIndex == 2 ?'on':''}}" bindtap="boxtwo" data-index="2">已使用</view>
+    <view class="boxtwo-tab-nav {{HomeIndex == 3 ?'on':''}}" bindtap="boxtwo" data-index="3">已过期</view>
+    <view class="boxtwo-tab-nav {{HomeIndex == 0 ?'on':''}}" bindtap="boxtwo" data-index="0">全部优惠劵</view>
+  </view>
+  <!--列表list组件 需要修改-->
+
+  <view class="boxtwo-content">
+    <!-- 未使用 -->
+    <view class="box" wx:if="{{bool==true}}">
+      <scroll-view bindscroll="srcoll" class="scrollview-list " scroll-y="true" bindscrolltolower="lower">
+        <view class="coupon-list-wrapper" wx:for="{{list}}" wx:key="item" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+          <view class="coupon-list">
+            <view class="coupon-list-left">
+              <image wx:if="{{item.couponState==11}}" src="../../images/kind/coupon_header_highlight.png"></image>
+              <image wx:if="{{item.couponState==22}}" src="../../images/kind/coupon_header_dark.png"></image>
+              <image wx:if="{{item.couponState==33}}" src="../../images/kind/coupon_header_dark.png"></image>
+              <image wx:if="{{item.couponState==44}}" src="../../images/kind/coupon_header_dark.png"></image>
+              <view class="coupon-price">￥
+                <text class="coupon-num">{{item.couponPrice/100.00}}</text>
+              </view>
+              <view wx:if="{{item.couponIslimit==1}}">
+                <view class="coupon-use">满
+                  <text>{{item.couponLimit/100.00}}</text>元可用</view>
+              </view>
+              <view wx:elif="{{item.couponIslimit==0}}">
+                <view class="coupon-use">无限制</view>
+              </view>
+            </view>
+            <view class="coupon-list-right">
+              <view class="coupon-detail">{{item.couponTitle}}</view>
+              <view class="coupon-time">{{item.couponStartDate}} - {{item.couponEndDate}}</view>
+              <view class="coupon-line"></view>
+              <view class="coupon-explain">{{item.couponDesc}}</view>
+              <view class="coupon-new coupon-useimg" wx:if="{{item.couponState==22}}">
+                <image src="../../images/kind/coupon_used@3x.png"></image>
+              </view>
+              <view class="coupon-new coupon-useimg" wx:if="{{item.couponState==33}}">
+                <image src="../../images/kind/coupon_expired@3x.png"></image>
+              </view>
+              <!-- 优惠券已分享 -->
+              <view class="coupon-new coupon-useimg" wx:if="{{item.couponState==44}}">
+                <image src="../../images/kind/haveshare@3x.png"></image>
+              </view>
+              <button class="coupon-go" open-type="share" data-id="{{item.couponId}}" data-amount="{{item.couponPrice/100.00}}" wx:if="{{item.couponState==11}}">去分享</button>
+              <view class="coupon-new">
+                <image src="{{item.img}}"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="address-box2" wx:elif="{{bool==false}}">
+      <view class="no_commodity">
+        <image src="../../images/kind/coupon_space.png"></image>
+      </view>
+      <view class="no-text">您还没有优惠券哦!</view>
+    </view>
+
+  </view>
+
+</view>

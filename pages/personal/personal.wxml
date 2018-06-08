@@ -1,0 +1,91 @@
+<view class="personal-header">
+  <view class="userinfo">
+    <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
+    <open-data class="userinfo-nickname" type="userNickName"></open-data>
+  </view>
+</view>
+<view class="form-list1">
+  <view class="form-item1 hide{{showInvite?'show':''}}" hover-class='hover-color'>
+    <view class="form-item-hd">
+      <image class="map-icon" src="../../images/kind/mine_people@3x.png"></image>
+    </view>
+    <view class="form-item-bd">
+      邀约
+    </view>
+    <button class="shareBtn" plain="false" open-type="share"></button>
+    <view class="form-item-image">
+      <image src="../../images/kind/right_arrow.png"></image>
+    </view>
+  </view>
+</view>
+<view class="form-list">
+  <navigator class="navigator form-item hide{{showView?'show':''}}" url='../tiplist/tiplist'>
+    <view class="form-item-hd">
+      <image class="map-icon" src="../../images/kind/mine_shared@3x.png"></image>
+    </view>
+    <view class="form-item-bd">
+      我的推荐
+    </view>
+    <view class="form-item-image">
+      <image src="../../images/kind/right_arrow.png"></image>
+    </view>
+  </navigator>
+  <navigator class="navigator form-item hide{{showView?'show':''}}" hover-class="navigator-hover" url="../commission/commission">
+    <view class="form-item-hd">
+      <image class="map-icon" src="../../images/kind/money@3x.png"></image>
+    </view>
+    <view class="form-item-bd">
+      我的佣金
+    </view>
+    <view class="form-item-image">
+      <image src="../../images/kind/right_arrow.png"></image>
+    </view>
+  </navigator>
+</view>
+<view class="form-list">
+  <navigator class=" form-item navigator" url="../coupon/coupon">
+    <view class="form-item-hd">
+      <image class="map-icon" src="../../images/kind/mine_coupon@3x.png"></image>
+    </view>
+    <view class="form-item-bd">
+      优惠券
+    </view>
+    <view class="form-item-image">
+      <image src="../../images/kind/right_arrow.png"></image>
+    </view>
+  </navigator>
+  <navigator class="form-item" url="../manageaddress/manageaddress">
+    <view class="form-item-hd">
+      <image class="map-icon" src="../../images/kind/address@3x.png"></image>
+    </view>
+    <view class="form-item-bd">
+      地址管理
+    </view>
+    <view class="form-item-image">
+      <image src="../../images/kind/right_arrow.png"></image>
+    </view>
+  </navigator>
+  <view class="form-item" bindtap='generateCode' hover-class='hover-color'>
+    <view class="form-item-hd">
+      <image class="map-icon" src="../../images/kind/code.png"></image>
+    </view>
+    <view class="form-item-bd">
+      生成二维码
+      <text class="personal-phone"></text>
+    </view>
+  </view>
+  <view class="form-item" bindtap='calling' hover-class='hover-color'>
+    <view class="form-item-hd">
+      <image class="map-icon" src="../../images/kind/Service@3x.png"></image>
+    </view>
+    <view class="form-item-bd">
+      联系客服
+      <text class="personal-phone">400-880-1889</text>
+    </view>
+  </view>
+</view>
+
+
+<canvas canvas-id="shareCanvas" class="shareCanvas hide{{showCanvas?'show':''}}" />
+<view class="shareButton hide{{showSharePic?'show':''}}" bindtap='sharePic'>保存图片，并分享到朋友圈</view>
+<view class='maskLayer' wx:if="{{addCart}}" bindtap='hideModal'></view>

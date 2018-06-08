@@ -1,0 +1,99 @@
+<!--pages/orderdetail/orderdetail.wxml-->
+<view class="container">
+  <view class="order-header">
+    <image class="order-header-img" src="../../images/kind/order-title.png"></image>
+    <view class="order-header-text" wx:if="{{orderStatus==110}}">等待付款</view>
+    <view class="order-header-right" wx:if="{{orderStatus==110}}">
+      <!-- <view>剩余30分钟</view> -->
+      <!-- <view class="countDownTimeView countDownAllView" >
+       剩余 
+    <text class="voteText countDownTimeText">{{countDownMinute}}分</text>  
+    <text class="voteText countDownTimeText">{{countDownSecond}}秒</text>
+  </view>   -->
+      <view>需付款￥{{(orderPrice-couponAmount)/100.00}}</view>
+    </view>
+    <view class="order-header-text" wx:if="{{orderStatus==120}}">已支付</view>
+    <!-- <view class="order-header-text" wx:if="{{orderStatus==310}}">已取消</view> -->
+    <view class="order-header-text" wx:if="{{orderStatus==310}}">
+      <view wx:if="{{refundmentStatus==null}}">已取消</view>
+      <view wx:if="{{refundmentStatus==120}}">退款中</view>
+      <view wx:if="{{refundmentStatus==130}}">已退款</view>
+      <view wx:if="{{refundmentStatus==140}}">退款失败</view>
+    </view>
+    <view class="order-header-text" wx:if="{{orderStatus==130}}">等待卖家发货</view>
+    <view class="order-header-text" wx:if="{{orderStatus==140}}">卖家已发货，请耐心等待</view>
+    <view class="order-header-text" wx:if="{{orderStatus==160}}">已完成</view>
+  </view>
+  <view class="logistics" wx:if="{{orderStatus==140 ||orderStatus==160}}" bindtap='logistics' data-orderId="{{orderId}}">
+    <view>物流信息</view>
+    <view class="logistics-img">
+      <image src="../../images/kind/right_arrow.png"></image>
+    </view>
+  </view>
+  <view class="payAddress">
+    <view class="addressBox">
+      <view class="address-first">
+        <text class="address-name">收货人：{{addressDetail.contacts}}</text>
+        <text class="address-phone">{{addressDetail.mobile}}</text>
+      </view>
+      <view class="address-first address-color">{{addressDetail.provinceName}}{{addressDetail.cityName}}{{addressDetail.districtName}}{{addressDetail.address}}</view>
+    </view>
+  </view>
+  <view class="payList-box">
+    <view class="payList" wx:for="{{items}}" wx:key="items" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <view class="pay-img">
+        <image src="{{item.itemPic}}"></image>
+      </view>
+      <view class="pay-decoration-box">
+        <view class="payList-name">{{item.itemName}}{{item.skuName}}</view>
+        <view class="payList-num">数量：{{item.quantity}}件</view>
+        <view>
+          <text class="payList-price">￥{{item.itemPrice/100.00}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="discount">
+      <text class="discount-title">配送方式</text>
+      <text class="discount-price2">商家配送</text>
+    </view>
+    <view class="discount">
+      <text class="discount-title">商品金额</text>
+      <text class="discount-price">￥{{orderPrice/100.00}}</text>
+    </view>
+    <view class="discount">
+      <text class="discount-title">实付金额</text>
+      <text class="discount-price discount-price1">￥{{(orderPrice-couponAmount)/100.00}}</text>
+    </view>
+    <view class="discount" wx:if="{{refundmentAccount!=null}}">
+      <text class="discount-title">退款金额</text>
+      <text class="discount-price discount-price1">￥{{(refundmentAccount)/100.00}}</text>
+    </view>
+  </view>
+  <view class="chat-box">
+    <view class="chat">
+      <button class="cBtn" open-type="contact"></button>
+      <image class="chat-img" src="../../images/kind/chat1@3x.png"></image>
+      <text class="chat-txt">联系客服</text>
+    </view>
+    <view class="chat-line"></view>
+    <view class="phone" bindtap='calling'>
+      <image class="phone-img" src="../../images/kind/phone@3x.png"></image>
+      <text class="chat-txt">拨打电话</text>
+    </view>
+  </view>
+  <view class="order-time1" wx:if="{{orderStatus!=110}}">
+    <view class="order-number">订单编号：{{orderId}}</view>
+    <view>下单时间：{{createDate}}</view>
+    <view wx:if="{{paidDate!=''}}">支付时间：{{paidDate}}</view>
+    <view wx:if="{{refundmentDate!=''}}">退款时间：{{refundmentDate}}</view>
+  </view>
+  <view class="order-time" wx:if="{{orderStatus==110}}">
+    <view class="order-number">订单编号：{{orderId}}</view>
+    <view>下单时间：{{createDate}}</view>
+    <view wx:if="{{paidDate!=''}}">支付时间：{{paidDate}}</view>
+    <view wx:if="{{refundmentDate!=''}}">退款时间：{{refundmentDate}}</view>
+  </view>
+  <view class="order-btn" wx:if="{{orderStatus==110}}">
+    <button class="pay-btn" data-orderId="{{orderId}}" bindtap='payment'>立即付款</button>
+  </view>
+</view>

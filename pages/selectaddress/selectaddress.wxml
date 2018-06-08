@@ -1,0 +1,20 @@
+<view class="container-address">
+  <view class="address-box" wx:if="{{boolean==true}}">
+      <view class="address-list" wx:for="{{list}}" wx:key="{{index}}" bindtap='selectaddress' data-value="{{item.addressId}}">
+        <view class="address-list-t" data-index="{{index}}">
+          <view class="address-name" data-index="{{index}}">{{item.consigneeName}}</view>
+          <view class="address-local" data-index="{{index}}">{{item.provinceName}}{{item.cityName}}{{item.districtName}}{{item.address}}            </view>
+          <view class="address-tel" data-index="{{index}}">{{item.consigneePhone}}</view>
+        </view>
+      </view>        
+     
+  </view>  
+  <view class="address-box2" wx:elif="{{boolean==false}}">
+     <view class="no_commodity">
+       <image src="../../images/kind/adress_space.png"></image>
+     </view>
+   <view class="no-text">您还没有添加收货地址哦!</view>
+  </view>  
+
+</view>  
+<view class="address-add" bindtap='addressNew'>添加新地址</view> 

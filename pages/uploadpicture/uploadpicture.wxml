@@ -1,0 +1,31 @@
+<!--pages/uploadpicture/uploadpicture.wxml-->
+<view class="container" name="file">
+  <view class="uploder-wrapper" wx:for="{{item}}" wx:key="item" wx:for-index="index" wx:for-item="item">
+    <view class="uploder-title">{{item.uploadtitle}}</view>
+    <view class="uploder-detail">{{item.uploaddetail}}</view>
+    <view class="weui-uploader__bd clearfix">
+      <view class="weui-uploader__input-box">
+        <view class="weui-uploader__input" bindtap="chooseImage" data-idx="{{index}}">
+          <view class="imgSize">
+            <image src="../../images/kind/photo@3x.png"></image>
+          </view>
+          <view class="img-title">
+            <view>上传照片</view>
+            <view>（最多一张）</view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-uploader__files">
+        <block>
+          <view class="weui-uploader__file">
+            <view class="weui-uploader__img" wx:if="{{tempFilePaths[index]!=null && tempFilePaths[index]!=undefined  && tempFilePaths[index]!='' }}">
+
+              <image src="{{tempFilePaths[index]}}" bindtap="previewImage" data-src="{{tempFilePaths}}" data-idx="{{index}}"></image>
+            </view>
+          </view>
+          <!-- bindtap="previewImage" -->
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,88 @@
+<view class='boxtwo'  style="{{addCart?'height:100%;overflow:hidden':''}}">
+  <view class="headerView">
+    <view class="boxtwo-tab-nav {{HomeIndex == 1 ?'on':''}}" bindtap="boxtwo" data-index="1">待支付</view>
+    <view class="boxtwo-tab-nav {{HomeIndex == 2 ?'on':''}}" bindtap="boxtwo" data-index="2">待发货</view>
+    <view class="boxtwo-tab-nav {{HomeIndex == 3 ?'on':''}}" bindtap="boxtwo" data-index="3">待签收</view>
+    <view class="boxtwo-tab-nav {{HomeIndex == 0 ?'on':''}}" bindtap="boxtwo" data-index="0">全部订单</view>
+  </view>
+    <view class="boxtwo-content clearfix" wx:if="{{isNull==false}}">
+        <view class="box clearfix" wx:for="{{list}}" wx:key="list" wx:for-index="idx" wx:for-item="order" data-idx="{{idx}}">
+        <!-- 待支付页面 -->
+          <view class="order-wrapper">
+            <view class="order-content">
+              <view class="order-content-left">
+                <view>订单编号：{{order.orderId}}</view>
+              </view>
+              <view class="order-content-right">
+                {{order.orderStatusName}}
+              </view>
+            </view>
+            </view>
+            <!-- 订单列表 -->
+            <view class="cart_container" bindtap='orderdetail' wx:for="{{order.items}}" wx:key="item" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" data-orderId="{{order.orderId}}">
+              <view class="item-image">
+              <image  src="{{item.itemPic}}"></image>
+              </view>
+              <view class="column">
+                <text class="title">{{item.itemName}}</text>
+                <view class="row">
+                  <text class="sku-price">颜色：</text>
+                  <text class="sku-price">{{item.skuName}}</text>
+                </view>
+              </view>
+              <view class="order-num">
+                <view class="order-num-price">￥{{item.itemPrice/100.00}}</view>
+                <view>x{{item.quantity}}</view>
+              </view>
+            </view>
+            <view class="order-footer">
+              <text>合计:￥<text class="order-money">{{(order.orderPrice-order.couponAmount)/100.00}}</text></text>
+              <text class="order-coupon" wx:if="{{order.couponAmount==0}}"></text>
+              <text class="order-coupon" wx:else>优惠：￥<text class="order-money">{{order.couponAmount/100.00}}</text></text>   
+              <text class="way">包邮</text>
+              <text>共{{order.quantity}}件</text>
+            </view>
+            <view class="order-btn" wx:if="{{order.orderStatus==110}}">
+              <button class="cancel-btn" bindtap='cancelOrder' type="default" data-orderId="{{order.orderId}}">取消订单</button> 
+              <button class="pay-btn uploadBtn" type="default" bindtap="uploadpicture" data-orderId="{{order.orderId}}">上传图片</button>
+              <button class="pay-btn" bindtap='gopay' type="warn" data-orderId="{{order.orderId}}">立即付款</button>    
+            </view>
+            <view class="order-btn" wx:if="{{order.orderStatus==120}}">
+             <!-- <button class="cancelbtn" type="default" bindtap='cancelOrder' data-orderId="{{order.orderId}}">取消订单</button>  -->
+                <button class="cancel-btn" type="default" bindtap='cancelOrder' data-orderId="{{order.orderId}}">取消订单</button>
+                <button class="pay-btn" type="default" bindtap="uploadpicture" data-orderId="{{order.orderId}}">上传图片</button>    
+            </view>
+            <view class="order-btn" wx:if="{{order.orderStatus==140}}">
+              <button class="pay-btn" type="warn" data-orderId="{{order.orderId}}"  bindtap='Confirm'>确认收货</button>
+            </view>
+        </view>
+    </view>
+  </view>
+
+  <!-- 取消订单原因 -->
+<view class='maskLayer' wx:if="{{addCart}}" bindtap='hideModal'></view>
+<view class='addcartStyle' wx:if="{{addCart}}" animation='{{animationData}}'>
+  <view class="check-order-title">取消订单</view>
+  <view class="order-suggest">
+   <view>温馨提示:</view>
+   <view>订单一旦取消，无法恢复</view>
+  </view>
+  <view class="check-order">
+    <view class="check-order-tip">请选择取消订单的原因（必选）</view>
+  <radio-group class="radio-group" bindchange='reasonSelect'>
+    <view class="check-order1" wx:for="{{item}}" wx:key="item" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <radio color="#FF4043"  class="reason-select" value="{{item.orderdetail}}" />
+      <text class="check-order1-detail">{{item.orderdetail}}</text>
+    </view>
+    </radio-group>
+  </view>
+  <view class="tijiao" bindtap='tijiao'>提交</view>
+</view>
+
+<!-- 订单为空时的页面 -->
+ <view class="boxtwo-content1" wx:if="{{isNull==true}}">
+  <view class="ordernullimg">
+  <image src="../../images/kind/order@3x.png"></image>
+  </view>
+  <view class="ordernulltxt">您还没有相关的订单哦！</view>
+</view> 

@@ -1,0 +1,379 @@
+.container{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar{
+  width:0;
+  height:0;
+  color:transparent;
+}
+.payAddress{
+  padding:0 24rpx;
+  background:#fff;
+  display:flex;
+  position: relative;
+}
+.payAddressBj{
+  width:100%;
+  height:4rpx;
+}
+.payAddressBj image{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.address-phone{
+  font-size:26rpx;
+}
+.addressBox{
+  padding-top:20rpx;
+  padding-bottom:20rpx;
+  padding-right:100rpx;
+}
+.address-first{
+  margin-left:20rpx;
+}
+.address-color{
+  color:#666666;
+  font-size:28rpx;
+  word-wrap: break-word; 
+  word-break: normal;
+}
+.address-name{
+  margin-right:20rpx;
+  font-size:32rpx;
+}
+.change-address{
+ width:20rpx;
+ height:32rpx;
+ position:absolute;
+ right:20rpx;
+ top:0;bottom:0;
+ margin: auto;
+}
+.change-address image{
+  width:100%;
+  height:100%;
+}
+.note{
+  background:#f4f4f4;
+  font-size:28rpx;
+}
+.note-content{
+  width:94%;
+  margin:0 auto;
+  line-height:50rpx;
+}
+.payList-box{
+  padding:0 24rpx;
+  background:#fff;
+}
+.payList{
+  display:flex;
+  border-bottom:1rpx solid #f6f6f6;
+  height:240rpx;
+  padding-top:20rpx;
+}
+.pay-img{
+  width:150rpx;
+  height:150rpx;
+  margin-top:20rpx;
+}
+.pay-img image{
+  width:100%;
+  height:100%;
+}
+.payList-name{
+  font-size:30rpx;
+  overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+}
+.payList-num{
+  color:#9B9B9B;
+  font-size:26rpx;
+  line-height:60rpx;
+}
+.payList-price{
+  font-size:30rpx;
+  color:#FF4043;
+}
+.pay-decoration-box{
+  width:500rpx;
+  margin-left:20rpx;
+}
+.pay-num{
+  float:right;
+  margin-right:20rpx;
+}
+.discount{
+  border-bottom:1rpx solid #efefef;
+  width:100%;
+  height:100rpx;
+  line-height:100rpx;
+}
+.discount-title{
+  display: block;
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color:#333333;
+  position: absolute;
+  left: 24rpx;
+}
+.discount-store{
+  position: relative;
+  bottom:38rpx;
+}
+.pay-box .discount-word{
+  height: 100rpx;
+  line-height: 100rpx;
+  position: relative;
+  bottom:38rpx;
+}
+.discount-price{
+  float:right;
+  margin-right:20rpx;
+  color:#9B9B9B;
+  font-size:28rpx;
+}
+.pay-box{
+  height:100rpx;
+   line-height:100rpx; 
+  margin-top:20rpx;
+  background:#fff;
+}
+.pay-box1{
+  margin-bottom:20rpx;
+  position: relative;
+  display:flex;
+}
+.discount-title-box{
+  width:200rpx;
+}
+.pay-input-box{
+  width:480rpx;
+}
+.pay-input{
+  width:100%;
+  height: 100%;
+  display:block; 
+  left: 214rpx;
+  font-size: 28rpx;
+  color:#333;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.detail-cart-bottom{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: white;
+  z-index:99;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.row-price{
+  width:50%;
+  text-align:left;
+  color:#E93B3A;
+  font-size:36rpx;
+  margin-left:24rpx;
+}
+.row-cart{
+  width:50%;
+  background-color:#E93B3A;
+  text-align:center;
+  color:#fff;
+  font-size:34rpx;
+}
+.row-price-total{
+  color:#333;
+  font-size:26rpx;
+}
+.addcartStyle{
+  width:100%;
+  height:650rpx;
+  position:fixed;
+  bottom:0rpx;
+  background:#e7e7e7;
+  z-index:10;
+  overflow:scroll;
+}
+.maskLayer{
+  width: 100%;  
+  height: 100%;  
+  justify-content: space-between;  
+  background-color:rgba(0, 0, 0, 0.5);
+  position:fixed;
+  bottom:90rpx;    
+  z-index:10;
+} 
+
+
+.coupon-list-wrapper{
+  width:702rpx;
+  margin:0 auto;
+  margin-top:24rpx;
+}
+.coupon-list-wrapper:last-child{
+margin-bottom:100rpx;
+}
+.coupon-list{
+  display:flex;
+  width:100%;
+  height:224rpx;
+}
+.coupon-list-left{
+  position: relative;
+  width:180rpx;
+  height: 224rpx;
+  color:#fff;
+  text-align:center; 
+  vertical-align: middle;
+  border-radius: 16rpx 0 0 16rpx;
+}
+.coupon-price{
+  /* position: absolute;
+  top:0rpx;
+  left: 34rpx; */
+  font-size: 26rpx;
+  /* height:116rpx;
+  line-height:116rpx; */
+  padding-top: 46rpx;
+}
+.coupon-num{
+  font-size:52rpx;
+}
+.coupon-list-right{
+  width: 502rpx;
+  padding-left:20rpx;
+  background: #fff;
+  border-radius: 0rpx 16rpx 16rpx 0rpx;
+  position: relative;
+}
+.coupon-detail{
+  position: relative;
+  top:24rpx;
+  height: 32rpx;
+  line-height:32rpx;
+  font-size: 32rpx;
+  color:#333;
+  word-wrap: break-word; 
+  word-break: normal;
+}
+.coupon-time{
+  height: 24rpx;
+  color: #9B9B9B;
+  font-size:24rpx;
+  line-height:24rpx;
+   margin-top: 96rpx; 
+}
+.coupon-use{
+  position: absolute;
+  top:136rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 26rpx;
+}
+.coupon-line{
+  width: 534rpx;
+  height: 2rpx;
+  background: #E7E7E7 50%;
+  box-shadow: inset 0 0 0 0 rgba(231,231,231,0.50);
+  position: relative;
+  left: -20rpx;
+  top:20rpx;
+}
+.coupon-explain{
+  width: 700rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 12px;
+  color: #9B9B9B;
+  margin-top: 20rpx;
+}
+/* 去使用按钮 */
+
+.coupon-go{
+  width: 140rpx;
+  height: 48rpx;
+  border: 2rpx solid #E95656;
+  border-radius: 200rpx;
+  line-height: 52rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #E95656;
+  position: absolute;
+  top:108rpx;
+  right: 40rpx;
+  background-color:#fff;
+}
+/* 新红包标签 */
+.coupon-new{
+  width:122rpx;
+  height: 122rpx;
+  position: absolute;
+  top:0;right: 0;
+}
+.coupon-new image{
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.detail-use{
+  color: #666666;
+}
+/* 已使用图片定位 */
+.coupon-useimg{
+  position: absolute;
+  top:27.4rpx;
+  right: 37.6rpx;
+}
+.coupon-list-left image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+.redColor{
+  color: #FF4043;
+}
+
+/* 无优惠券时的状态 */
+.couponTip{
+  font-size:40rpx;
+  font-weight:bolder;
+  color:#fff;
+  text-align:center;
+  line-height:650rpx;
+  height:650rpx;
+}
+.pay-Space{
+  width: 100%;
+  height: 24rpx;
+  background: #EDEEF0;
+}
+/* 给商家留言 */
+.weui-cell__bd{
+  -webkit-box-flex:1;
+  -webkit-flex:1;
+  flex:1;
+}

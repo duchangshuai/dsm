@@ -1,0 +1,113 @@
+/* pages/tiplist/tiplist.wxss */
+/* pages/commission/commission.wxss */
+.container{
+  width:100%;
+}
+.commission-box{
+  height:400rpx;
+  width:94%;
+  margin:0 auto;
+  background:#fff;
+  border-radius: 24rpx;
+}
+.commission-money{
+  margin-top:40rpx;
+  text-align:center;
+  font-size:60rpx;
+
+}
+.commission-money-tip{
+  font-size:26rpx;
+}
+.commission-presented{
+  font-size:26rpx;
+  text-align: center;
+  margin-top:40rpx;
+}
+.commission-btn{
+  width:480rpx;
+  height:88rpx;
+  border-radius: 88rpx;
+  text-align: center;
+  color:#fff;
+  background:#ef652c;
+  margin:0 auto;
+  margin-top:60rpx;
+  line-height:88rpx;
+  font-size:34rpx;
+}
+.presented-wrapper{
+  width:100%;
+  height:164rpx;
+  background:#fff;
+  border-bottom:1rpx solid #e7e7e7;
+}
+.presented{
+  padding:0 24rpx;
+  display:flex;
+}
+.presented-img{
+  width:100rpx;
+  height:100rpx;
+  margin-top:30rpx;
+  border-radius: 100%;
+}
+.presented-img image{
+  width:100%;
+  height:100%;
+  border-radius: 100%;
+}
+.presented-content{
+  width:497rpx;
+  margin-left:20rpx;
+  padding-top:30rpx;
+  text-align:left;
+}
+.presented-name{
+  font-size:34rpx;
+  margin-bottom:10rpx;
+}
+.presented-price{
+  font-size:26rpx;
+}
+.presented-time{
+  font-size:24rpx;
+  color:#a9a9a9;
+}
+.presented-right{
+  padding-top:24rpx;
+  text-align: right;
+}
+.havepresented{
+  color:#f27a49;
+  font-size:26rpx;
+}
+.havepresented-price{
+  font-size:40rpx;
+  line-height:60rpx;
+}
+.title{
+  padding:0 24rpx;
+  height:72rpx;
+  font-size:26rpx;
+  color:#9B9B9B;
+  position:relative;
+}
+.title-txt{
+position:absolute;
+bottom:10rpx;
+}
+.title-text{
+  position:absolute;
+  bottom:10rpx;
+  left:200rpx;
+}
+.noItem{
+  width:100%;
+  height:100rpx;
+  line-height:20rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color:#9B9B9B;
+  margin-top: 20rpx;
+}

@@ -1,0 +1,38 @@
+<view class="receive-content">
+  <image src="../../images/kind/share_one.png"></image>
+  <view class="receive-title">
+    <view class="receive-title-left">德施曼微商城</view>
+  </view>
+  <view class="receive-quality" decode="{{true}}">
+    <view class="point-box">
+      <view class="receive-point">●</view>
+      <view class="receive-text">上门安装</view> 
+    </view>
+    <view class="point-box">
+      <view class="receive-point">●</view>
+      <view class="receive-text">三年质保</view> 
+    </view>
+    <view class="point-box">
+      <view class="receive-point">●</view>
+      <view class="receive-text">正品保障</view> 
+    </view>
+  </view>
+  <view class="receive-title market">
+    <view class="receive-title-left">德施曼智能  狂欢购物</view>
+    <!-- <view class="receive-title-right">狂欢购物</view> -->
+  </view>
+  <view class="shareUser">{{user}}</view>
+  <view class="userCoupon">送你{{price/100.00}}元现金红包</view>
+  <button class="receive" bindtap='Receive'>领取红包</button>
+  <view class="rule-box">
+    <view class="rule-line"></view>
+    <view class="rule-title">查看规则</view>
+    <view class="rule-line rule-active"></view>
+  </view>
+  <view class="rule-total">
+    <view class="rule-one">1:红包默认发送到您的德施曼智能小程序里，在小程序里购买商品可以使用该红包。</view>
+    <view class="rule-one">2:每个订单仅限使用一个红包，红包不找零。</view>
+    <view class="rule-one">3:活动最终解释权归德施曼智能所有。</view>     
+  </view>
+  <view class="receive-store">德施曼智能</view>
+</view>

@@ -1,0 +1,73 @@
+<scroll-view class="scroll container" scroll-y="true" scroll-top="{{scrollTop}}" bindscrolltoupper="refreshDown"  bindscroll="scroll" bindscrolltolower="onReachBottom">
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper" >
+      <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-active-color="#FF4043" bindchange="swiperChange" class="swiper">
+        <block>
+            <view  wx:for="{{carousel}}" wx:key="carousel"  wx:for-item="item">
+               <swiper-item data-id="{{item.sourceId}}" data-isOpen="{{item.isOpen}}"  bindtap="kindToggle">
+                  <image class="swiper-img" src="{{item.imageUrl}}"></image>
+               </swiper-item>  
+            </view>        
+        </block>        
+      </swiper>
+      <view class="dots">  
+         <block wx:for="{{carousel}}" wx:key="carousel">  
+           <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>  
+         </block>  
+      </view> 
+    </view>
+    <view class="kind-list-item">
+        <view class="kind-list-text" wx:for="{{itemNew}}" wx:key="itemNew" data-isOpen="{{item.isOpen}}" bindtap="kindToggle" data-id="{{item.sourceId}}">
+            <image src="{{item.imageUrl}}"></image>
+        </view>
+        <view class="kind-list-text" wx:for="{{hot}}" wx:key="hot" data-isOpen="{{item.isOpen}}" bindtap="kindToggle" data-id="{{item.sourceId}}">
+            <image src="{{item.imageUrl}}"></image>
+        </view>      
+    </view>
+    <!--分类-->
+    <view>
+        <view class="line-title">
+          <view class="line-left"></view>
+          <view class="title-text">热门推荐</view>
+          <view class="line-right"></view>
+        </view>
+        <view class="kind-list-img" wx:for="{{recommend}}" data-isOpen="{{item.isOpen}}" bindtap="kindToggle" data-id="{{item.sourceId}}" wx:key="recommend">
+            <image src="{{item.imageUrl}}"></image>
+        </view>
+        <view class="list-style-box">
+          <view class="list-style" wx:for="{{itemList}}" wx:for-item="item"  wx:for-index="idx" wx:key="itemList">
+            <view class="list" catchtap='btn' data-id="{{item.itemId}}">
+              <view class="list-box">
+                <view  class="list-img flex-item">
+                   <image src="{{item.firstPicUrl}}"></image>
+                </view>
+              </view>
+              <view class="list-decoration-box">
+                <view class="list-decoration">{{item.itemName}}</view>
+                <view class="list-decoration1">{{item.itemTitle}}</view>
+                <view class="list-decoration2">￥{{item.itemPrice/100.00}}</view>
+              </view>
+            </view>
+          </view>
+           <view class="list-style" wx:for="{{dynamicList}}" wx:for-item="item" wx:key="dynamicList">
+            <view class="list" catchtap='btn' data-id="{{item.itemId}}">
+            <view class="list-box">
+              <view class="list-img flex-item">
+                <image src="{{item.itemPic}}"></image>
+              </view>
+              </view>
+              <view class="list-decoration-box">
+                <view class="list-decoration">{{item.itemName}}</view>
+                <view class="list-decoration1">{{item.itemTitle}}</view>
+                <view class="list-decoration2">￥{{item.salePrice/100.00}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view hidden="{{hideBottom}}"> 
+         <view class="noItem">{{loadMoreData}}</view>
+        </view>
+    </view>
+    <!--分类-->
+  </view>
+</scroll-view>
